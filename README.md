@@ -1,6 +1,6 @@
 # libartemis
 ------------
-This is a library for connection to a Artemis USB 1 series camera.  Its has been build from code shared in wxAstroCapture. The unessesary functions have been removed to try and create a 3rd party driver that will be shared with the INDI project.
+This is a library for connection to a Artemis USB 1 series camera.  Its has been build from code shared in wxAstroCapture. The unessesary functions have been removed to try and create a 3rd party driver that will be shared with the INDI project.  It has been developed for a RaspberryPi. This code was built using Visual Studio Code, with the CMake extension.
 
 # wxAstroCapture
 ----------------
