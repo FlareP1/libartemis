@@ -8,14 +8,15 @@ cmake_minimum_required (VERSION 3.9)
 project(artemis VERSION 0.1.0 DESCRIPTION "Artemis CCD Driver")
 set(CMAKE_BUILD_TYPE Debug)
 
-#Bring the headers, such as Student.h into the project
-#include_directories(include ~/wxWidgets-2.8.12/include ~/wxWidgets-2.8.12/build/lib/wx/include/gtk2-ansi-debug-2.8)
+message(${PROJECT_SOURCE_DIR})
+
+#Add the compile defines required by the wxWidgets library
 add_definitions(-DNOPCH -D__WXDEBUG__ -D_DEBUG -D__WX__ )
 #Set Compiler Flags
 # from wx-config --version=2.8 --toolkit=gtk2 --debug --cxxflags
-SET(GCC_COVERAGE_COMPILE_FLAGS "-I../ -I../wxIO -I../include -I/home/astroberry/wxWidgets-2.8.12/include/ -I/home/astroberry/wxWidgets-2.8.12/build-debug/lib/wx/include/gtk2-ansi-debug-2.8/ -I/usr/local/lib/wx/include/gtk2-ansi-debug-2.8 -I/usr/local/include/wx-2.8 -D_FILE_OFFSET_BITS=64 -D_LARGE_FILES -D__WXDEBUG__ -D__WXGTK__ -pthread ")
+SET(GCC_COVERAGE_COMPILE_FLAGS "-I${PROJECT_SOURCE_DIR}/ -I.${PROJECT_SOURCE_DIR}/wxIO -I${PROJECT_SOURCE_DIR}/include -I${PROJECT_SOURCE_DIR}/../wxWidgets-2.8.12/include/ -I${PROJECT_SOURCE_DIR}/../wxWidgets-2.8.12/build-debug/lib/wx/include/gtk2-ansi-debug-2.8/ -I/usr/local/lib/wx/include/gtk2-ansi-debug-2.8 -I/usr/local/include/wx-2.8 -D_FILE_OFFSET_BITS=64 -D_LARGE_FILES -D__WXDEBUG__ -D__WXGTK__ -pthread ")
 # from wx-config  --version=2.8 --toolkit=gtk2 --debug --libs
-SET(GCC_COVERAGE_LINK_FLAGS  "-L/home/astroberry/wxWidgets-2.8.12/build-debug/lib -L/usr/local/lib -pthread   -lwx_gtk2d_richtext-2.8 -lwx_gtk2d_aui-2.8 -lwx_gtk2d_xrc-2.8 -lwx_gtk2d_qa-2.8 -lwx_gtk2d_html-2.8 -lwx_gtk2d_adv-2.8 -lwx_gtk2d_core-2.8 -lwx_based_xml-2.8 -lwx_based_net-2.8 -lwx_based-2.8 -lusb")
+SET(GCC_COVERAGE_LINK_FLAGS  "-L{PROJECT_SOURCE_DIR}/../wxWidgets-2.8.12/build-debug/lib -L/usr/local/lib -pthread   -lwx_gtk2d_richtext-2.8 -lwx_gtk2d_aui-2.8 -lwx_gtk2d_xrc-2.8 -lwx_gtk2d_qa-2.8 -lwx_gtk2d_html-2.8 -lwx_gtk2d_adv-2.8 -lwx_gtk2d_core-2.8 -lwx_based_xml-2.8 -lwx_based_net-2.8 -lwx_based-2.8 -lusb")
 
 SET(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} ${GCC_COVERAGE_COMPILE_FLAGS}")
 SET(CMAKE_EXE_LINKER_FLAGS  "${CMAKE_EXE_LINKER_FLAGS} ${GCC_COVERAGE_LINK_FLAGS}")
