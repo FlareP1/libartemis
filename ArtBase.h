@@ -76,6 +76,9 @@ public:
 
 	// query the camera video ccd original dimension (BIN=1)
 	void CcdDimension(unsigned short& width, unsigned short& height) const;
+	
+	// query the camera video ccd original pixel dimension (BIN=1)
+	void CcdPixelSizeDimension(float& width, float& height) const;
 
 	// query the camera video frame original dimension (BIN=1)
 	void CamDimension(unsigned short& width, unsigned short& height) const;

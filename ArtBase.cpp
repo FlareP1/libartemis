@@ -547,6 +547,12 @@ void ArtBase::CcdDimension(wxUint16& width, wxUint16& height) const
    width = m_artProps.nPixelsX; height = m_artProps.nPixelsY;
 }
 
+// query the camera video pixel size (BIN=1)
+void ArtBase::CcdPixelSizeDimension(float& width, float& height) const
+{
+   width = m_artProps.PixelMicronsX; height = m_artProps.PixelMicronsY;
+}
+
 // query the camera video frame original dimension (BIN=1)
 void ArtBase::CamDimension(wxUint16& width, wxUint16& height) const
 {
