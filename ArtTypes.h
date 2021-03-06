@@ -244,6 +244,8 @@ struct ARTEMISPROPERTIES
 	int   cameraflags;  // ARTEMISPROPERTIESCAMERAFLAGS
 	char  Description[40];
 	char  Manufacturer[40];
+   char  CamModel[20];
+   char  SensorType[20];
 };
 
 typedef void* ArtemisHandle;

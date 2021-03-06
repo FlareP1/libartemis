@@ -186,6 +186,7 @@ ArtBase::ArtBase()
 	m_artProps.PixelMicronsX = 0.0; m_artProps.PixelMicronsY = 0.0;
 	m_artProps.ccdflags = 0;        m_artProps.cameraflags = 0;
 	m_artProps.Description[0] = 0;  m_artProps.Manufacturer[0] = 0;
+   m_artProps.CamModel[0] = 0;     m_artProps.SensorType[0] = 0;
 }
 
 
@@ -551,6 +552,18 @@ void ArtBase::CcdDimension(wxUint16& width, wxUint16& height) const
 void ArtBase::CcdPixelSizeDimension(float& width, float& height) const
 {
    width = m_artProps.PixelMicronsX; height = m_artProps.PixelMicronsY;
+}
+
+// query the camera model type
+void ArtBase::GetCamModel(std::string& CamModelStr) const
+{
+   CamModelStr = std::string(m_artProps.CamModel);
+}
+
+// query the camera ccd type
+void ArtBase::GetCamSensorType(std::string& CamSensorStr) const
+{
+   CamSensorStr = std::string(m_artProps.SensorType);
 }
 
 // query the camera video frame original dimension (BIN=1)

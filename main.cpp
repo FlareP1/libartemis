@@ -41,6 +41,7 @@ int main()
       for(int item=0; item<num_items; item++) {
          const ArtDevice& descr = ArtBase::ArtDevEntry(item);
          // add camera friendly name to list
+         // eg. "Artemis CCD Camera" this is all that is possible until connection
          std::cout << "Found Camera " << descr.DevName() << "\n";
          cameras.Add(descr.DevName());
       }
@@ -78,8 +79,18 @@ int main()
          std::cout << "HasFifo " << m_hasfifo << "\n";
          m_isConnected = true;
          std::cout << "m_isConnected " << m_isConnected << "\n";
+
+         //Get Cameera Typpe Details
+         std::string cammodel;
+         m_ds->GetCamModel(cammodel);
+         std::cout << "CAM " << cammodel << "\n";
+
+         std::string camsensortype;
+         m_ds->GetCamSensorType(camsensortype);
+         std::cout << "SENSOR " << camsensortype << "\n";;
+
       }
- 
+
       std::cout << "Select a subFrmae for download \n";
       //bool ArtBase::SetSubframe(unsigned short startX, unsigned short startY, unsigned short endX, unsigned short endY)
       status = m_ds->SetSubframe(100,100,ccdw-200,ccdh-200);

@@ -397,8 +397,15 @@ ARTEMISERROR Atik16Drv::Properties(ARTEMISPROPERTIES& pProp)
    pProp.PixelMicronsY = m_caps.PixelSizeY;
    pProp.cameraflags = m_caps.FIFOfitted ? ARTEMIS_PROPERTIES_CAMERAFLAGS_FIFO : ARTEMIS_PROPERTIES_CAMERAFLAGS_NULL;
    pProp.ccdflags = m_caps.Interlaced ? ARTEMIS_PROPERTIES_CCDFLAGS_INTERLACED : ARTEMIS_PROPERTIES_CCDFLAGS_NULL;
+
    strncpy(pProp.Description, m_caps.ID_String.c_str(), 39); pProp.Description[39]=0;
    strncpy(pProp.Manufacturer, m_caps.UserID_String.c_str(), 39);pProp.Manufacturer[39]=0;
+   _V_ ::fprintf(stderr, "Atik16Drv::Properties() - %s\n",pProp.Description);
+   _V_ ::fprintf(stderr, "Atik16Drv::Properties() - %s\n",pProp.Manufacturer);
+   strncpy(pProp.CamModel, m_caps.CamModel.c_str(), 19); pProp.Description[19]=0;
+   strncpy(pProp.SensorType, m_caps.SensorType.c_str(), 19);pProp.Manufacturer[19]=0;
+   _V_ ::fprintf(stderr, "Atik16Drv::Properties() - %s\n",pProp.CamModel);
+   _V_ ::fprintf(stderr, "Atik16Drv::Properties() - %s\n",pProp.SensorType); 
 
    if (m_connected)
       return ARTEMIS_OK;

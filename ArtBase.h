@@ -15,6 +15,7 @@
 
 #include "ArtDevice.h"
 #include "wxArtSample.h"
+#include <string>
 
 // The base classes to implement Artemis  CCD and HSC type cameras
 // CCD = Art285/429/255 and Atik branded ones
@@ -82,6 +83,10 @@ public:
 
 	// query the camera video frame original dimension (BIN=1)
 	void CamDimension(unsigned short& width, unsigned short& height) const;
+
+	void GetCamModel(std::string& CamModelStr) const;
+
+	void GetCamSensorType(std::string& CamSensorStr) const;
 
 	// query the current video frame dimension
 	void FrameDimension(unsigned short& width, unsigned short& height) const;
